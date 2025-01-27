@@ -43,7 +43,18 @@ router.put('/:id', async(req, res)=>{
     }
 });
 
+// Delete Tasks
 
+
+router.delete('/:id', async(req, res)=>{
+    try {
+        const {id} = req.params;
+        await Task.findByIdAndDelete(id);
+        res.status(200).json({message:'Task Deleted'});
+    } catch (error) {
+        res.status(500).json({message:error.message});
+    }
+});
 
 
 
