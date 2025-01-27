@@ -1,5 +1,6 @@
 const express = require('express');
 const Task = require('../models/Task');
+const sendEmail = require('../utils/email');
 
 const router = express.Router();
 
@@ -7,8 +8,11 @@ const router = express.Router();
 router.post('/', async(req, res)=>{
     try {
         
-        const {title, status, dueDate} = req.body;
+        const {title, status, dueDate, email} = req.body;
         const task = await Task.create({title, status, dueDate});
+
+        const emailMessage = `Reminder: Your task ${title} is due on ${dueDate}`;
+        await sendEmail(email, 'Task Due Reminder', emailMessage); 
         res.status(201).json(task);
 
     } catch (error) {
