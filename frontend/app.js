@@ -12,21 +12,61 @@ const fetchTasks = async () => {
         const tasks = await res.json();
         taskList.innerHTML = ''; // Clear the list before rendering
         tasks.forEach(task => {
-            const li = document.createElement('li');
-            li.textContent = `${task.title} - ${task.status} - Due: ${task.dueDate} `;
-            const editButton = document.createElement('button');
-            editButton.textContent = 'Edit';
-            editButton.onclick = () => editTask(task._id);
+            // const li = document.createElement('li');
+            // li.textContent = `${task.title} - ${task.status} - Due: ${task.dueDate} `;
 
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Delete';
-            deleteButton.onclick = () => deleteTask(task._id);
+            // const buttonContainer = document.createElement('div');
+            // const editButton = document.createElement('button');
+            // editButton.textContent = 'Edit';
+            // editButton.onclick = () => editTask(task._id);
+
+            // const deleteButton = document.createElement('button');
+            // deleteButton.textContent = 'Delete';
+            // deleteButton.onclick = () => deleteTask(task._id);
 
             // const br = document.createElement('br');
             // li.appendChild(br);
-            li.appendChild(editButton);
-            li.appendChild(deleteButton);
-            taskList.appendChild(li);
+            // li.appendChild(editButton);
+            // li.appendChild(deleteButton);
+            // taskList.appendChild(li);
+
+        const li = document.createElement('li');
+
+        const textSpan = document.createElement('span');
+        textSpan.textContent = `${task.title} - ${task.status} - Due: ${task.dueDate}`;
+
+        const buttonContainer = document.createElement('div');
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.onclick = () => editTask(task._id);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = () => deleteTask(task._id);
+
+        buttonContainer.appendChild(editButton);
+        buttonContainer.appendChild(deleteButton);
+
+
+        li.appendChild(textSpan);
+
+        if(task.status=='pending')
+        {
+            li.classList.add('pending-list');
+        }
+
+        if(task.status=='in-progress')
+        {
+            li.classList.add('in-progress-list');
+        }
+
+        if(task.status=='complete')
+        {
+            li.classList.add('complete-list');
+        }
+        li.appendChild(buttonContainer);
+        taskList.appendChild(li);
+
         });
     } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -36,10 +76,15 @@ const fetchTasks = async () => {
 // Add a new task
 const addTask = async () => {
     if (taskTitleInput.value.trim() && taskDueDateInput.value.trim() && taskEmailInput.value.trim()) {
+
+        // const rawDate = taskDueDateInput.value; 
+        // const formattedDate = new Date(rawDate).toISOString().split('T')[0];
+
         const newTask = {
             title: taskTitleInput.value,
             status: taskStatusInput.value,
             dueDate: taskDueDateInput.value,
+            // dueDate: formattedDate,
             email: taskEmailInput.value
         };
 
