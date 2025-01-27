@@ -26,6 +26,25 @@ router.get('/', async(req, res)=>{
     }
 });
 
+//Update Tasks
+
+router.put('/:id', async(req, res)=>{
+    try {
+        const {id} = req.params;
+        const {title, status, dueDate} = req.body;
+        const updatedTasks = await Task.findByIdAndUpdate(
+            id,
+            {title,status,dueDate},
+            {new:true}
+        );
+        res.status(200).json(updatedTasks);
+    } catch (error) {
+        res.status(500).json({message:error.message});
+    }
+});
+
+
+
 
 
 
