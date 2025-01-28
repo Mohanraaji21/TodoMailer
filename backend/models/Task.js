@@ -19,8 +19,8 @@ const TaskSchema = mongoose.Schema({
         default: Date.now(),
     },
     email: {
-        type: String, // Add email field
-        required: true, // Make it required if every task must have an email
+        type: String, 
+        required: true, 
     },
 });
 
