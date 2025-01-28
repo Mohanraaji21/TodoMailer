@@ -10,64 +10,97 @@ const fetchTasks = async () => {
     try {
         const res = await fetch('http://localhost:5000/api/tasks');
         const tasks = await res.json();
-        taskList.innerHTML = ''; // Clear the list before rendering
+        taskList.innerHTML = ''; 
+
         tasks.forEach(task => {
-            // const li = document.createElement('li');
-            // li.textContent = `${task.title} - ${task.status} - Due: ${task.dueDate} `;
-
-            // const buttonContainer = document.createElement('div');
-            // const editButton = document.createElement('button');
-            // editButton.textContent = 'Edit';
-            // editButton.onclick = () => editTask(task._id);
-
-            // const deleteButton = document.createElement('button');
-            // deleteButton.textContent = 'Delete';
-            // deleteButton.onclick = () => deleteTask(task._id);
-
-            // const br = document.createElement('br');
-            // li.appendChild(br);
-            // li.appendChild(editButton);
-            // li.appendChild(deleteButton);
-            // taskList.appendChild(li);
-
-        const li = document.createElement('li');
-
-        const textSpan = document.createElement('span');
-        textSpan.textContent = `${task.title} - ${task.status} - Due: ${task.dueDate}`;
-
-        const buttonContainer = document.createElement('div');
-        const editButton = document.createElement('button');
-        editButton.textContent = 'Edit';
-        editButton.onclick = () => editTask(task._id);
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
-        deleteButton.onclick = () => deleteTask(task._id);
-
-        buttonContainer.appendChild(editButton);
-        buttonContainer.appendChild(deleteButton);
+            const li = document.createElement('li');
+        
+            const textSpan = document.createElement('span');
+            textSpan.textContent = `${task.title} - Due: ${task.dueDate}`;
+        
+            const statusDropdown = document.createElement('select');
+            const statuses = ['pending', 'in-progress', 'complete'];
+        
+            statuses.forEach(status => {
+                const option = document.createElement('option');
+                option.value = status;
+                option.textContent = status;
+                if (task.status === status) {
+                    option.selected = true;
+                }
+                statusDropdown.appendChild(option);
+            });
 
 
-        li.appendChild(textSpan);
+            statusDropdown.onchange = async () => {
+                try {
+                    const updatedTask = { 
+                        status: statusDropdown.value,
+                        email: task.email // Pass the task's email for sending the email notification
+                    };
+            
+                    await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(updatedTask),
+                    });
+            
+                    li.classList.remove('pending-list', 'in-progress-list', 'complete-list');
+            
+                    if (statusDropdown.value === 'pending') {
+                        li.classList.add('pending-list');
+                    }
+            
+                    if (statusDropdown.value === 'in-progress') {
+                        li.classList.add('in-progress-list');
+                    }
+            
+                    if (statusDropdown.value === 'complete') {
+                        li.classList.add('complete-list');
+                    }
+            
+                    console.log(`Task status updated to ${statusDropdown.value}`);
+                } catch (error) {
+                    console.error('Error updating task status:', error);
+                }
+            };
+            
+            
+        
+            const buttonContainer = document.createElement('div');
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.onclick = () => editTask(task._id);
+        
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.onclick = () => deleteTask(task._id);
+        
+            buttonContainer.appendChild(editButton);
+            buttonContainer.appendChild(deleteButton);
 
-        if(task.status=='pending')
-        {
-            li.classList.add('pending-list');
-        }
-
-        if(task.status=='in-progress')
-        {
-            li.classList.add('in-progress-list');
-        }
-
-        if(task.status=='complete')
-        {
-            li.classList.add('complete-list');
-        }
-        li.appendChild(buttonContainer);
-        taskList.appendChild(li);
-
+            if (statusDropdown.value === 'pending') {
+                li.classList.add('pending-list');
+            }
+    
+            if (statusDropdown.value === 'in-progress') {
+                li.classList.add('in-progress-list');
+            }
+    
+            if (statusDropdown.value === 'complete') {
+                li.classList.add('complete-list');
+            }
+        
+            li.appendChild(textSpan);
+            li.appendChild(statusDropdown);
+            li.appendChild(buttonContainer);
+        
+         
+            taskList.appendChild(li);
         });
+        
     } catch (error) {
         console.error('Error fetching tasks:', error);
     }
@@ -83,8 +116,9 @@ const addTask = async () => {
         const newTask = {
             title: taskTitleInput.value,
             status: taskStatusInput.value,
-            dueDate: taskDueDateInput.value,
+            // dueDate: taskDueDateInput.value,
             // dueDate: formattedDate,
+            dueDate: new Date(taskDueDateInput.value),
             email: taskEmailInput.value
         };
 

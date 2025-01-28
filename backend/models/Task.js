@@ -1,25 +1,27 @@
-// const express = require('express');
 const mongoose = require('mongoose');
-// const {Schema } = mongoose.Schema;
 
 const TaskSchema = mongoose.Schema({
-    title : {
-        type:String,
+    title: {
+        type: String,
         required: true,
     },
-    status:{
-        type:String,
-        enum:['start', 'in-progress', 'pending', 'complete'],
-        default: 'pending'
+    status: {
+        type: String,
+        enum: ['start', 'in-progress', 'pending', 'complete'],
+        default: 'pending',
     },
-    dueDate : {
+    dueDate: {
         type: Date,
-        required: false
+        required: false,
     },
-    createdAt:{
+    createdAt: {
         type: Date,
         default: Date.now(),
-    }
+    },
+    email: {
+        type: String, // Add email field
+        required: true, // Make it required if every task must have an email
+    },
 });
 
 const Task = mongoose.model('Task', TaskSchema);
