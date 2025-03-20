@@ -1,0 +1,52 @@
+[debug] [2025-02-08T06:16:11.893Z] : 
+[debug] [2025-02-08T06:16:11.895Z] : ----------------------------------------------------------------------
+[debug] [2025-02-08T06:16:11.895Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\mohan\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js init
+[debug] [2025-02-08T06:16:11.896Z] : CLI Version:  1.17.6
+[debug] [2025-02-08T06:16:11.896Z] : Platform:     win32
+[debug] [2025-02-08T06:16:11.896Z] : Node Version: v22.12.0
+[debug] [2025-02-08T06:16:11.897Z] : Time:         Sat Feb 08 2025 11:46:11 GMT+0530 (India Standard Time)
+[debug] [2025-02-08T06:16:11.897Z] : ----------------------------------------------------------------------
+[debug] [2025-02-08T06:16:11.897Z] : 
+[debug] [2025-02-08T06:16:12.813Z] : > authorizing via signed-in user option
+[debug] [2025-02-08T06:16:12.813Z] : > command requires scopes: ["ZohoCatalyst.projects.ALL","ZohoCatalyst.projects.ALL","Stratus.sdkop.CREATE","Stratus.sdkop.READ","ZohoCatalyst.project.import.CREATE"]
+[info] [2025-02-08T06:16:12.828Z] : 
+      ___  
+      \  \     ____           _             _                 _   
+   ___ \  \   / ___|   __ _  | |_    __ _  | |  _   _   ___  | |_ 
+  /  / /  /  | |      / _` | | __|  / _` | | | | | | | / __| | __|
+ /  / /__/   | |___  | (_| | | |_  | (_| | | | | |_| | \__ \ | |_ 
+ \  \         \____|  \__,_|  \__|  \__,_| |_|  \__, | |___/  \__|
+  \__\                                          |___/       
+
+You're about to initialize a Catalyst project in this directory:
+
+  E:\Programs\CrestCode\To-Do mailer\Project1\TodoMailer\backend
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[debug] [2025-02-08T06:16:15.064Z] : > refreshing access token <
+[debug] [2025-02-08T06:16:15.065Z] : >>>> HTTP REQUEST : POST https://accounts.zoho.in/oauth/v2/token 
+<request body omitted>
+
+[debug] [2025-02-08T06:16:15.278Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Sat, 08 Feb 2025 06:16:16 GMT","content-type":"application/json;charset=UTF-8","content-length":"1948","connection":"keep-alive","set-cookie":["zalb_6e73717622=13e67ac15bc4d3ece130966123511df7; Path=/; Secure; HttpOnly","iamcsr=617f8de1-44b7-4d95-87c1-f00655acb63c;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=617f8de1-44b7-4d95-87c1-f00655acb63c;path=/;SameSite=Strict;Secure;priority=high"],"cache-control":"no-store","x-content-type-options":"nosniff","content-security-policy":"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.zohocdn.com https://*.zoho.com https://*.zoho.eu https://*.zoho.com.cn https://*.zoho.com.au https://*.zoho.jp https://*.zoho.uk https://*.zoho.sa https://*.zohocloud.ca; report-uri https://logsapi.zoho.in/csplog?service=accounts;","pragma":"no-cache","x-frame-options":"SAMEORIGIN","vary":"accept-encoding","content-language":"en-US","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-02-08T06:16:15.303Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/orgs 
+
+[debug] [2025-02-08T06:16:15.522Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Sat, 08 Feb 2025 06:16:16 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["zalb_3a750b85f1=411f509465b028e7e235eac6930aaab2; Path=/; Secure; HttpOnly","ZD_CSRF_TOKEN=f4935e9e-331b-4b0e-85ee-043e84f79e36;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=f4935e9e-331b-4b0e-85ee-043e84f79e36;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[info] [2025-02-08T06:16:15.532Z] : i Setting up a new default project for this folder
+
+[debug] [2025-02-08T06:16:15.536Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project 
+
+[debug] [2025-02-08T06:16:15.615Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Sat, 08 Feb 2025 06:16:16 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["zalb_3a750b85f1=ed010f63633be60a322039283f31a645; Path=/; Secure; HttpOnly","ZD_CSRF_TOKEN=ac73f10e-ebfe-4b6d-99db-ea2a65a4c15b;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=ac73f10e-ebfe-4b6d-99db-ea2a65a4c15b;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
+[debug] [2025-02-08T06:17:24.040Z] : >>>> HTTP REQUEST : GET https://api.catalyst.zoho.in/baas/v1/project/import 
+
+[debug] [2025-02-08T06:17:24.191Z] : <<<< HTTP RESPONSE : 200
+Response Headers: {"server":"ZGS","date":"Sat, 08 Feb 2025 06:17:24 GMT","content-type":"application/vnd.catalyst.v2+json","transfer-encoding":"chunked","connection":"keep-alive","set-cookie":["zalb_3a750b85f1=411f509465b028e7e235eac6930aaab2; Path=/; Secure; HttpOnly","ZD_CSRF_TOKEN=b23da3da-2938-459c-be0d-b1b8d5744a07;path=/;SameSite=None;Secure;priority=high","_zcsr_tmp=b23da3da-2938-459c-be0d-b1b8d5744a07;path=/;SameSite=Strict;Secure;priority=high"],"x-content-type-options":"nosniff","x-xss-protection":"1","cache-control":"private,no-cache,no-store,max-age=0,must-revalidate","pragma":"no-cache","expires":"Thu, 01 Jan 1970 00:00:00 GMT","x-frame-options":"DENY","strict-transport-security":"max-age=64072000; includeSubDomains; preload"}
+
